@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>View All Contacts</title>
+	<style>
+		th{
+			border-style:solid;
+		}
+		td{
+			border-left:solid;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Computer Brand</th>
+				<th>Operating System</th>
+				<th>Dedicated Graphics</th>
+				<th>Power In Watts</th>
+				<th>CPU Brand</th>
+				<th>CPU Cores</th>
+				<th>GPU Brand</th>
+				<th>GPU Series</th>
+			</tr>
+			<tr th:each="currentComputer : ${computers}">
+				<td th:text="${currentComputer.id}"/>
+				 <td th:text="${currentComputer.brand}" />
+				 <td th:text="${currentComputer.os}" />
+				 <td th:text="${currentComputer.hasDedicatedGraphics}" />
+				 <td th:text="${currentComputer.watts}"/>
+				 <td th:text="${currentComputer.cpu.cpu_Brand}" />
+				 <td th:text="${currentComputer.cpu.cpu_Cores}" />
+				 <td th:text="${currentComputer.gpu.gpu_Brand}"/>
+				 <td th:text="${currentComputer.gpu.gpu_Series}"/>
+				<td><a th:href="@{/edit/{id}(id=${currentComputer.id})}">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${currentComputer.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+	<a href="../inputComputer">Add a new computer</a>
+</body>
+</html>

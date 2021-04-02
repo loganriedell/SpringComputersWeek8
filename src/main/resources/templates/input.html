@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert New Computer</title>
+</head>
+<body>
+	<form th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST'>
+		Brand: <input name="brand" size="20" th:field="*{brand}"> <br />
+		Operating System: <input name="os" size="10" th:field="*{os}"><br />
+		Dedicated Graphics: <select name="hasDedicatedGraphics" size="2" th:field="*{hasDedicatedGraphics}">
+									<option value = "true">True</option>
+									<option value = "false">False</option>
+								</select><br/>
+		Power In Watts: <input name="watts" size="10" th:field="*{watts}"><br/>
+		CPU Brand: <input name="cpu.cpu_Brand" size="20" th:field="*{cpu.cpu_Brand}"><br/>
+		CPU Cores: <input name="cpu.cpu_Cores" size="2" th:field="*{cpu.cpu_Cores}"><br/>
+		GPU Brand: <input name="gpu.gpu_Brand" size="20" th:field="*{gpu.gpu_Brand}"><br/>
+		GPU Series: <input name="gpu.gpu_Series" size="20" th:field="*{gpu.gpu_Series}"><br/>
+		
+		<input name="submit" type="submit" value="submit"/>
+	</form>
+	<a href="viewAll">View all Computers</a>
+</body>
+</html>

@@ -5,16 +5,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.NoArgsConstructor;
+
 @Entity
 public class Computer {
 	//Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+
 	private String brand;
 	private String os;
 	private boolean hasDedicatedGraphics;
 	private int watts;
+	
+	@Autowired
+	private CentralProcessor cpu;
+	@Autowired
+	private GraphicsProcessor gpu;
 	
 	//Constructors
 	public Computer()
@@ -80,15 +91,24 @@ public class Computer {
 		this.watts = watts;
 	}
 	
+	public CentralProcessor getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(CentralProcessor cpu) {
+		this.cpu = cpu;
+	}
+
+	public GraphicsProcessor getGpu() {
+		return gpu;
+	}
+
+	public void setGpu(GraphicsProcessor gpu) {
+		this.gpu = gpu;
+	}
 	@Override
 	public String toString() {
 		return "Computer [id=" + id + ", brand=" + brand + ", os=" + os + ", hasDedicatedGPU=" + hasDedicatedGraphics
 				+ ", watts=" + watts + "]";
 	} 
-	
-	
-	
-	
-	
-
 }

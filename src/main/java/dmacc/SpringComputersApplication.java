@@ -16,14 +16,14 @@ import dmacc.controller.BeanConfig;
 import dmacc.repository.ComputerRepo;
 
 @SpringBootApplication
-public class SpringComputersApplication implements CommandLineRunner {
+public class SpringComputersApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringComputersApplication.class, args);
 	}
 	@Autowired
 	ComputerRepo repo;
-	
+	/*
 	@Override
 	public void run(String... args) throws Exception {
 			ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfig.class);
@@ -36,6 +36,6 @@ public class SpringComputersApplication implements CommandLineRunner {
 				System.out.println(com.toString());
 			}
 			((AbstractApplicationContext) appContext).close();	
-	}
+	}*/
 
 }
