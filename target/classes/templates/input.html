@@ -2,9 +2,59 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert New Computer</title>
+<script type="text/javascript">
+	//checks to see that all fields are filled in
+	function checkInput()
+	{
+		
+		if(document.comForm.brand.value == ""){
+			alert("Please enter the computer's brand name...");
+			document.comForm.brand.focus();
+			return false;
+		}
+		if (document.comForm.os.value == ""){
+			alert("Please enter an os...");
+			isValid = false;
+			document.comForm.os.focus();
+			return false;
+		}
+		if (document.comForm.watts.value == 0){
+			alert("Please enter the wattage of your computer...");
+			isValid = false;
+			document.comForm.watts.focus();
+			return false;
+		}
+		if (cpu_Brand == "Logan"){
+			alert("Please enter the brand of CPU your computer has...");
+			isValid = false;
+			document.comForm.cpu_Brand.focus();
+			return false;
+		}
+		if (document.comForm.cpu_Cores.value == ""){
+			alert("Please enter the amount of cores your computer's CPU has...");
+			isValid = false;
+			document.comForm.cpu_Cores.focus();
+			return false;
+		}
+		if (document.comForm.gpu_Brand.value == ""){
+			alert("Please enter the brand of GPU your computer has...");
+			isValid = false;
+			document.comForm.gpu_Brand.focus();
+			return false;
+		}
+		if (document.comForm.gpu_Series.value == ""){
+			alert("Please enter the GPU series of your computer...");
+			isValid = false;
+			document.comForm.gpu_Series.focus();
+			return false;
+		}
+		
+		return true;
+	}
+</script>
 </head>
 <body>
-	<form th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST'>
+	<form th:object="${newComputer}" th:action="@{/update/{id}(id=${newComputer.id})}" method='POST' name="comForm" onsubmit="return checkInput();">
 		Brand: <input name="brand" size="20" th:field="*{brand}"> <br />
 		Operating System: <input name="os" size="10" th:field="*{os}"><br />
 		Dedicated Graphics: <select name="hasDedicatedGraphics" size="2" th:field="*{hasDedicatedGraphics}">
@@ -12,10 +62,10 @@
 									<option value = "false">False</option>
 								</select><br/>
 		Power In Watts: <input name="watts" size="10" th:field="*{watts}"><br/>
-		CPU Brand: <input name="cpu.cpu_Brand" size="20" th:field="*{cpu.cpu_Brand}"><br/>
-		CPU Cores: <input name="cpu.cpu_Cores" size="2" th:field="*{cpu.cpu_Cores}"><br/>
-		GPU Brand: <input name="gpu.gpu_Brand" size="20" th:field="*{gpu.gpu_Brand}"><br/>
-		GPU Series: <input name="gpu.gpu_Series" size="20" th:field="*{gpu.gpu_Series}"><br/>
+		CPU Brand: <input name="cpu_Brand" size="20" th:field="*{cpu.cpu_Brand}"><br/>
+		CPU Cores: <input name="cpu_Cores" size="2" th:field="*{cpu.cpu_Cores}"><br/>
+		GPU Brand: <input name="gpu_Brand" size="20" th:field="*{gpu.gpu_Brand}"><br/>
+		GPU Series: <input name="gpu_Series" size="20" th:field="*{gpu.gpu_Series}"><br/>
 		
 		<input name="submit" type="submit" value="submit"/>
 	</form>
